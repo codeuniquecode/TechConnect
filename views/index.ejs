@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
-
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 
 <body>
@@ -24,39 +24,39 @@
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav ms-auto fs-5">
                     <a class="nav-link " href="/">Home</a>
-                    <a class="nav-link" href="#">About</a>
-                    <a class="nav-link" href="#">Services</a>
-                    <a class="nav-link " href="#">Contact</a>
+                    <a class="nav-link" href="#about">About</a>
+                    <a class="nav-link" href="#services">Services</a>
+                    <a class="nav-link " href="#contact">Contact</a>
                 </div>
             </div>
         </div>
     </nav>
     <!-- nabar ends -->
-    <main>
+    <main  data-bs-spy="scroll" data-bs-target="#list-example" data-bs-offset="0" class="scrollspy-example" tabindex="0">
         <div class="container">
             <div class="row  landing">
                 <div class="col-md-12 text-center  col-sm-12 col-lg-12">
-                    <h1 class="display-1">Welcome to TechConnect</h1>
-                    <p class="fs-4 subtext">Your Trusted IT Partner. We provide cutting-edge IT solutions to help
+                    <h1 class="display-1 " data-aos="fade-right">Welcome to TechConnect</h1>
+                    <p class="fs-4 subtext" data-aos="fade-left">Your Trusted IT Partner. We provide cutting-edge IT solutions to help
                         businesses grow, streamline operations, and stay ahead in the digital era.</p>
-                    <button class="btn btn-lg mt-1">Get Started</button>
+                    <button class="btn btn-lg mt-1" data-aos="fade-right">Get Started</button>
                 </div>
             </div>
         </div>
         <!-- landing ends -->
         <!-- about us -->
-        <div class="row mt-1 aboutus container mx-auto">
+        <div class="row mt-1 aboutus container mx-auto" id="about">
             <div class="col-md-12 text-center  col-sm-12 col-lg-12">
                 <p class="fs-1 fw-bold custom-color">About Us</p>
-                <p class="fs-3 fw-bold">Who We Are?</p>
-                <p class="subtext">
+                <p class="fs-3 fw-bold " data-aos="fade-down">Who We Are?</p>
+                <p class="subtext" data-aos="fade-up">
                     We are a team of passionate IT professionals committed to delivering exceptional service and
                     innovative solutions. Our expertise spans across various domains, including cloud computing,
                     cybersecurity, data analytics, and software development. We pride ourselves on staying at the
                     forefront of technology trends to bring you the latest advancements.
                 </p>
-                <p class="fs-3 fw-bold">Why Choose Us?</p>
-                <p class="subtext">
+                <p class="fs-3 fw-bold" data-aos="fade-up">Why Choose Us?</p>
+                <p class="subtext" data-aos="fade-down">
                     At TechConnect, we are committed to excellence. Our client-centric approach ensures that we deliver
                     solutions that are not only effective but also aligned with your business goals. We take pride in
                     our ability to forge lasting relationships with our clients, built on trust and mutual success.
@@ -69,9 +69,9 @@
         <!-- abut us ends -->
 
         <!-- services starts -->
-        <div class="container services ">
+        <div class="container services " id="services">
             <p class="fs-1 fw-bold text-center custom-color">Services</p>
-            <div class="row ">
+            <div class="row " data-aos="fade-right">
                 <div class="card col-lg-4 col-md-4 col-sm-12 col-xm-12 mt-sm-2 mt-md-1">
                     <div class="card-body text-center">
                         <h5 class="card-title text-center"><i class="fa-solid fa-robot"></i> Chatbot</h5>
@@ -98,7 +98,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row ">
+            <div class="row " data-aos="fade-left">
                 <div class="card col-lg-4 col-md-4 col-sm-12 col-xm-12 mt-sm-2 mt-md-1">
                     <div class="card-body text-center">
                         <h5 class="card-title text-center"><i class="fa-solid fa-code"></i> Software Development</h5>
@@ -129,7 +129,7 @@
         <!-- services ends -->
 
         <!-- contact us starts -->
-        <div class="container contact ">
+        <div class="container contact " id="contact">
             <p class="fs-1 fw-bold text-center custom-color">Contact Us</p>
             <form method="post" action="/contact">
                 <div class="mb-3">
@@ -174,14 +174,14 @@
                 <div class="col-md-12 text-center  col-sm-12 col-lg-12">
                     <div class="container  py-4">
                         <div class="row text-center">
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-12" data-aos="fade-down">
                                 <h3 class="custom-color">Contact Information</h3>
                                     Address - Gwarko, Lalitpur <br>
                                     9883055292 <br>
                                     <a href="#" class="">techconnect@gmail.com</a>
                                 </p>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-12" data-aos="fade-up">
                                 <h3 class="text-center custom-color">Links</h3>
                                 <ul class="list-unstyled  fs-6 text-center">
                                     <li><a href="#" class="">Terms of Service</a></li>
@@ -189,7 +189,7 @@
                                     <li><a href="#" class="">Careers</a></li>
                                 </ul>
                             </div>
-                            <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                            <div class="col-lg-4 col-md-4 col-sm-6 col-12" data-aos="fade-down">
                                 <h3 class="text-center custom-color">Social Media</h3>
                                 <ul class=" list-unstyled fs-6 text-center">
                                     <li><a href="#" class=""><i class="fab fa-facebook"></i> Facebook</a></li>
@@ -207,13 +207,15 @@
 
     </footer>
 
-
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
         <script src="https://kit.fontawesome.com/2c8d038c04.js" crossorigin="anonymous"></script>
-
+        <script>
+            AOS.init();
+        </script>
+        
 </body>
 
 </html>
