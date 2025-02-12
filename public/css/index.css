@@ -1,0 +1,87 @@
+/* css variables */
+
+
+body{
+    font-family: 'Poppins', sans-serif !important;
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    background-color: red !important;
+    
+}
+.nav-link, .navbar-brand{
+    color:white !important;
+}
+.navbar-brand{
+    font-weight: bolder !important;
+}
+.nav-link{
+    font-weight: bold !important;
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+.btn{
+    background-color: red !important;
+    color: white !important;
+}
+
+/* @media screen and (min-width: 768px){
+    .landing{
+        height: 90vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+} */
+.landing{
+    height: 86vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+@media screen and (max-width: 576px){
+    .subtext{
+        text-align: justify;
+    }
+}
+.aboutus{
+    background-color: #f8f9fa;
+}
+.services, .contact,.footer{
+    margin-top: 2rem !important;
+}
+.card{
+    border:none !important;
+}
+a{
+    text-decoration: none !important;
+    color: black !important;
+}
+.card-body>a{
+    color:white !important;
+}
+.card-title, .custom-color{
+    color:red !important;
+}
+.last{
+    background-color: red;
+    color: white;
+}
+.btn:hover{
+    background-color: white !important;
+    color: red !important;
+    border: 1px solid red !important;
+    scale: 1.1;
+    transition: background-color 0.3s ease, color 0.3s ease;
+
+}
+ .nav-link:hover{
+    scale: 1.1;
+    transition: scale 0.3s ease;
+
+ }
+a>i{
+    color: red !important;
+}
