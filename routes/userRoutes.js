@@ -4,5 +4,5 @@ const controller = require('../controller/userController');
 
 
 router.get('/',controller.home);
-
+router.post('/contact', controller.contact);
 module.exports = router;
