@@ -8,6 +8,7 @@ exports.contact = async(req,res)=>{
     const data = new form(req.body);
     await data.save();
     res.status(201).json({ success: true, message: 'Your form has been submitted.' });
+  
 
    } catch (error) {
     console.log('error occured in storing data', error);

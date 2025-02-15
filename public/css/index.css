@@ -85,3 +85,7 @@ a{
 a>i{
     color: red !important;
 }
+main {
+    position: relative !important; 
+    overflow: hidden !important;
+}
