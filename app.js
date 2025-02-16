@@ -9,8 +9,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 const router = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-app.use('/',router);
+
 app.use('/',adminRoutes);
+app.use('/',router);
 
 app.set('view engine', 'ejs');
 app.set('views', './views'); //
