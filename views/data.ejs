@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechConnect || Data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        .container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 70vh;
+        }
+        .btn {
+            background-color: red;
+            color: white;
+        }
+
+        .btn:hover {
+            background-color: white !important;
+            color: red !important;
+            border: 1px solid red !important;
+            scale: 1.1;
+            transition: background-color 0.3s ease, color 0.3s ease;
+
+        }
+    </style>
+</head>
+<body>
+    <main>
+        
+        <p class="fs-3 fw-bold text-center mt-3">Click mark as read after contact</p>
+        <div class="container">
+        <% if (data) { %>
+            <div class="card mt-sm-2 mt-md-1">
+                <div class="card-body text-center">
+                   Name: <p class="text-center"><%= data.name %></p>
+                   Email: <p class="text-center"><%= data.email %></p>
+                   Service: <p class="text-center"><%= data.service %></p>
+                   Description: <p class="card-text text-center"><%= data.description %></p>
+                   Contact Date: <p class="text-center">
+                        <%=data.date %>
+                    </p>
+                    <form id="form">
+                        <button type="submit" class="btn d-block mx-auto">
+                            <i class="fa-solid fa-check"></i> Mark as read
+                        </button>
+                    </form>
+                    
+                </div>
+            </div>
+        <% } %>
+        
+
+        </div>
+    </main>
+    <script>
+         document.getElementById('form').addEventListener('submit', async function (event) {
+        event.preventDefault();
+
+        try {
+            const response = await fetch('/contacted', {
+                method: 'PATCH',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    id: '<%= data._id %>'
+                })
+            });
+            if(response.ok){
+                window.location.href = '/dashboard';
+            }
+            console.log('Response status:', response.status);
+        } catch (error) {
+            console.error('Error:', error);
+        }});
+        
+    </script>
+    <script src="https://kit.fontawesome.com/2c8d038c04.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+</html>

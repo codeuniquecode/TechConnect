@@ -1,6 +1,7 @@
 const bcrypt = require('bcrypt');
 const adminData = require('../model/adminSchema');
 const formData = require('../model/formSchema');
+const form = require('../model/formSchema');
 exports.login = (req,res)=>{
     res.render('login');
 }
@@ -44,6 +45,27 @@ exports.validateRegister = async(req,res)=>{
     }
 }
 exports.showDashboard = async(req,res)=>{
-    const data = await formData.find();
+    const data = await formData.find({contacted:false});
     res.render('dashboard',{data});
+}
+exports.displayData = async(req,res)=>{
+    const {id} = req.params;
+    // console.log(id);
+    const data = await form.findById(id);
+
+    if(!data){
+        res.status(500).end();
+    }
+    res.render('data',{data});
+
+}
+exports.contacted = async(req,res)=>{
+    const {id} = req.body;
+    const data = await form.findByIdAndUpdate(id,{contacted:true});
+    if(!data){
+        return res.status(404).json({ error: "Data not found" });
+    }
+    return res.status(200).json({ message:"done" });
+    
+    
 }
