@@ -2,6 +2,7 @@ const bcrypt = require('bcrypt');
 const adminData = require('../model/adminSchema');
 const formData = require('../model/formSchema');
 const form = require('../model/formSchema');
+const jwt = require('jsonwebtoken');
 exports.login = (req,res)=>{
     res.render('login');
 }
@@ -20,6 +21,13 @@ exports.validateLogin = async (req, res) => {
             console.log(' Invalid password');
             return res.status(401).json({ message: 'Invalid password' });
         }
+        //if email and pas match generate token
+        //data,secretkey,date
+        const token = jwt.sign({id:validEmail._id},process.env.KEY,{
+            expiresIn:"1d"
+        });
+        // console.log("token"+token);
+        res.cookie('token',token);
         return res.redirect('/dashboard');
 
     } catch (error) {
@@ -68,4 +76,8 @@ exports.contacted = async(req,res)=>{
     return res.status(200).json({ message:"done" });
     
     
+}
+exports.logout=(req,res)=>{
+    res.clearCookie('token');
+    res.redirect('/');
 }
