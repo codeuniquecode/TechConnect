@@ -7,6 +7,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 require('./model/index');
 require('./model/formSchema');
 require('dotenv').config();
+const rateLimit = require('express-rate-limiter');
 const port = process.env.port;
 app.use(express.static('./public'));
 app.use(express.json());
@@ -34,7 +35,12 @@ passport.deserializeUser((user,done)=>{//retreiving user data from session is de
 })
 const router = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
-
+const limiter = rateLimit({
+    windowMs: 2 * 60 * 1000,
+    max: 5,
+    message: 'Too many attempts, please try again after 2 minutes'
+  });
+app.use('/login',limiter);
 app.use('/',adminRoutes);
 app.use('/',router);
 
