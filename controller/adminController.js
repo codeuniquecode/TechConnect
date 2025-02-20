@@ -81,3 +81,10 @@ exports.logout=(req,res)=>{
     res.clearCookie('token');
     res.redirect('/');
 }
+exports.googleLogin=(req,res)=>{
+    console.log('user google login success');
+    res.redirect('/profile');
+}
+exports.profile =(req,res)=>{
+    res.send(`${req.user.displayName}`);
+}
