@@ -12,6 +12,6 @@ router.route('/contacted').patch(controller.contacted);
 router.get('/form/:id',controller.displayData);
 router.route('/logout').get(controller.logout);
 router.route('/auth/google').get(passport.authenticate('google',{scope:["profile",'email']}));
-router.route('/auth/google/callback').get(passport.authenticate('google',{failureRedirect:"/"}),controller.googleLogin);
+router.route('/auth/google/callback').get(passport.authenticate('google',{failureRedirect:"/"}),controller.showDashboard);
 router.route('/profile').get(controller.profile);
 module.exports = router;

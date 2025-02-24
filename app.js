@@ -7,7 +7,7 @@ const GoogleStrategy = require('passport-google-oauth20').Strategy;
 require('./model/index');
 require('./model/formSchema');
 require('dotenv').config();
-const rateLimit = require('express-rate-limiter');
+const rateLimit = require('express-rate-limit');
 const port = process.env.port;
 app.use(express.static('./public'));
 app.use(express.json());
@@ -24,17 +24,44 @@ passport.use(new GoogleStrategy({
     clientID:process.env.GOOGLE_CLIENT_ID,
     clientSecret:process.env.GOOGLE_CLIENT_SECRET,
     callbackURL:'http://localhost:3000/auth/google/callback'
-}, (accessToken, refreshToken, profile, done) => {
-    return done(null, profile);
+}, async (accessToken, refreshToken, profile, done) => {
+    try {
+        // Check if user already exists in DB by email
+        let user = await admin.findOne({ email: profile.emails[0].value });
+
+        if (!user) {
+            // If user doesn't exist, create a new user
+            user = await admin.create({
+                googleId: profile.id, // Unique Google ID
+                name: profile.displayName,
+                email: profile.emails[0].value,
+            });
+        }
+
+        return done(null, user);
+    } catch (err) {
+        return done(err, null);
+    }
 }));
-passport.serializeUser((user,done)=>{//saving user data to session is serialize
-    done(null,user);
-})
-passport.deserializeUser((user,done)=>{//retreiving user data from session is deserialize
-    done(null,user);
-})
+// passport.serializeUser((user,done)=>{//saving user data to session is serialize
+//     done(null,user);
+// })
+// passport.deserializeUser((user,done)=>{//retreiving user data from session is deserialize
+//     done(null,user);
+// })
+// Serialize user into session
+passport.serializeUser((user, done) => {
+    done(null, user.id);
+});
+
+// Deserialize user from session
+passport.deserializeUser(async (id, done) => {
+    const user = await admin.findById(id);
+    done(null, user);
+});
 const router = require('./routes/userRoutes');
 const adminRoutes = require('./routes/adminRoutes');
+const admin = require('./model/adminSchema');
 const limiter = rateLimit({
     windowMs: 2 * 60 * 1000,
     max: 5,
